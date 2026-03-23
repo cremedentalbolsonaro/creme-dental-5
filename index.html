@@ -93,10 +93,37 @@
 
     /* ── HERO ── */
     .hero {
-      max-width: 860px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 56px 24px 44px;
+      padding: 0 0 0;
       text-align: center;
+      position: relative;
+    }
+
+    /* Desktop banner */
+    .hero-banner-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    /* Mobile banner */
+    .hero-banner-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner-desktop { display: none; }
+      .hero-banner-mobile  { display: block; }
+    }
+
+    /* Text overlay on banner */
+    .hero-text-overlay {
+      background: var(--offwhite);
+      padding: 36px 24px 44px;
     }
     .hero-eyebrow {
       display: inline-block;
@@ -108,15 +135,15 @@
       text-transform: uppercase;
       padding: 5px 16px;
       border-radius: 2px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .hero h1 {
       font-family: 'Sora', sans-serif;
-      font-size: clamp(30px, 7vw, 64px);
+      font-size: clamp(28px, 6vw, 58px);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.03em;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       color: var(--dark);
     }
     .hero h1 em { font-style: normal; color: var(--green); }
@@ -125,46 +152,8 @@
       color: var(--gray);
       font-weight: 300;
       max-width: 600px;
-      margin: 0 auto 40px;
-      line-height: 1.65;
-    }
-    .hero-product-img {
-      width: min(300px, 78vw);
-      height: min(300px, 78vw);
-      background: var(--dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 0 6px var(--offwhite), 0 0 0 8px var(--green), 0 24px 60px rgba(13,31,15,0.22);
-    }
-    .hero-product-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 35% 30%, #1a4a20 0%, #0d1f0f 65%);
-    }
-    .tube-emoji {
-      font-size: 88px;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 8px 20px rgba(245,200,0,0.35));
-      animation: float 3s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-    .hero-caption {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--gray);
-      text-transform: uppercase;
-      margin-top: 14px;
+      line-height: 1.65;
     }
 
     /* ── ARTICLE LAYOUT ── */
@@ -645,14 +634,22 @@
 
 <!-- HERO -->
 <section class="hero reveal">
-  <div class="hero-eyebrow">Virou assunto</div>
-  <h1>Saiba por que esse <em>creme dental</em> virou assunto na internet</h1>
-  <p class="subheadline">Produto curioso mistura uso cotidiano com apelo simbólico e começou a aparecer em comentários e vídeos nas redes.</p>
-  <div>
-    <div class="hero-product-img">
-      <span class="tube-emoji">🦷</span>
-    </div>
-    <p class="hero-caption">Creme Dental Místico · Edição Especial</p>
+  <!-- Banner images -->
+  <img
+    src="desktop_2.png"
+    alt="Creme Dental Bolsonaro — banner desktop"
+    class="hero-banner-desktop"
+  />
+  <img
+    src="mobile_2.png"
+    alt="Creme Dental Bolsonaro — banner mobile"
+    class="hero-banner-mobile"
+  />
+  <!-- Headline below banner -->
+  <div class="hero-text-overlay">
+    <div class="hero-eyebrow">Virou assunto</div>
+    <h1>Saiba por que esse <em>creme dental</em> virou assunto na internet</h1>
+    <p class="subheadline">Produto curioso mistura uso cotidiano com apelo simbólico e começou a aparecer em comentários e vídeos nas redes.</p>
   </div>
 </section>
 
@@ -816,13 +813,13 @@
     <h2>Experimente o ritual.<br />Sinta a <em>diferença.</em></h2>
     <p class="cta-desc">Faça parte das mais de 40.000 pessoas que já transformaram sua manhã com o Creme Dental Místico.</p>
     <div class="cta-price">
-      <span class="old">R$ 29,90</span>
-      <span class="new"><sup>R$</sup>19<span style="font-size:26px;font-weight:600">,90</span></span>
+      <span class="old">R$ 89,90</span>
+      <span class="new"><sup>R$</sup>29<span style="font-size:26px;font-weight:600">,90</span></span>
     </div>
-    <p class="cta-parcelas">ou monte o seu kit com 3, 6, 12 ou 24 unidades</p>
+    <p class="cta-parcelas">ou 3x de R$ 10,63 sem juros</p>
     <a href="#" class="btn-primary">Garantir meu kit agora</a>
     <p class="cta-guarantee">
-      <span>✦</span> &nbsp; Frete grátis para todo o Brasil acima de 6 unidades &nbsp; · &nbsp; 07 dias de garantia &nbsp; · &nbsp; Pagamento seguro
+      <span>✦</span> &nbsp; Frete grátis para todo o Brasil &nbsp; · &nbsp; 30 dias de garantia &nbsp; · &nbsp; Pagamento seguro
     </p>
   </div>
 
@@ -839,7 +836,7 @@
 
 <!-- STICKY RIBBON -->
 <div class="sticky-ribbon" id="stickyRibbon">
-  <p>🦷 &nbsp; Kit Creme Dental Bolsonaro com <strong>6 unidades</strong> — de R$149,00 por <strong>R$15,92 cada</strong></p>
+  <p>🦷 &nbsp; Kit Creme Dental Místico com <strong>66% OFF</strong> — de R$89,90 por <strong>R$29,90</strong></p>
   <a href="#">Comprar agora →</a>
 </div>
 
